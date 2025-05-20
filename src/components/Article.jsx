@@ -2,6 +2,8 @@ import { getArticleById } from "../utils/api";
 import { useEffect, useState } from "react";
 import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/material";
 import { useParams } from "react-router";
+import Comments from "./Comments";
+import { Container } from "@mui/system";
 
 const Article = () => {
     const { article_id } = useParams();
@@ -29,34 +31,40 @@ const Article = () => {
     }
     if (error) {
         return <Typography gutterBottom variant="h3" component="div">
-           Error fetching article
+            Error fetching article
         </Typography>
     }
     if (!article) {
         return <div>No article found</div>;
     }
     return (
-        <Box sx={{ flexGrow: 1, padding: 5 }}>
-            <Card>
-                <CardMedia
-                    component="img"
-                    height="250"
-                    image={article.article_img_url}
-                    alt={article.title}
-                />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {article.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        {article.body}
-                    </Typography>
-                    <Typography gutterBottom variant="h7" component="div">
-                        Author: {article.author}
-                    </Typography>
-                </CardContent>
-            </Card>
-        </Box>
+        <Container maxWidth="lg">
+            <Box sx={{ flexGrow: 3, padding: 5 }}>
+                <Card>
+                    <CardMedia
+                        component="img"
+                        height="300"
+                        image={article.article_img_url}
+                        alt={article.title}
+                    />
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {article.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {article.body}
+                        </Typography>
+                        <Typography gutterBottom variant="h7" component="div">
+                            Author: {article.author}
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </Box>
+            <Box sx={{ padding: 1 }}>
+                <Comments />
+            </Box>
+        </Container>
+
     );
 }
 export default Article;
