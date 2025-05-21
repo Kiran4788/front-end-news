@@ -1,22 +1,25 @@
 import { getCommentsByArticleId } from "../utils/api";
 //use mui accordian to show comments
-import { Accordion, AccordionDetails, AccordionSummary, Box, Typography } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Icon, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { formatDate } from "../utils/utils";
+import { deleteCommentById } from "../utils/api";
 
 
-const Comments = ({comments, setComments}) => {
+const Comments = ({ comments, setComments }) => {
     const { article_id } = useParams();
-   
+    const [username, setUsername] = useState("happyamy2016");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [deleteLoading, setDeleteLoading] = useState(false);
+    const [deleteError, setDeleteError] = useState(false);
 
     useEffect(() => {
         setLoading(true);
         getCommentsByArticleId(article_id).then((comments) => {
-            setComments(comments);            
+            setComments(comments);
         }
         ).catch((error) => {
             setError(true);
@@ -25,6 +28,24 @@ const Comments = ({comments, setComments}) => {
         }
         );
     }, [article_id]);
+
+    const handleDeleteComment = (comment_id) => {
+        setDeleteLoading(true);
+        setComments((currentComments) => currentComments.filter((comment) => comment.comment_id !== comment_id));
+        setTimeout(() => {
+            deleteCommentById(comment_id)
+                .then(() => {
+                    setComments((currentComments) => currentComments.filter((comment) => comment.comment_id !== comment_id));
+                })
+                .catch((error) => {
+                    setDeleteError(true);
+                })
+                .finally(() => {
+                    setDeleteLoading(false);
+                });
+        }
+            , 1000);
+    }
 
     if (loading) {
         return <Typography gutterBottom variant="h3" component="div">
@@ -41,6 +62,8 @@ const Comments = ({comments, setComments}) => {
             No comments found
         </Typography>
     }
+    const deleteStr = deleteLoading ? "Deleting..." : deleteError ? "Error while deleting comment" : "Delete";
+
     return (
         <Box sx={{ flexGrow: 1, padding: 5 }}>
 
@@ -60,6 +83,17 @@ const Comments = ({comments, setComments}) => {
                     <AccordionDetails>
                         <Typography>
                             {comment.body}
+                            {username === comment.author && (
+                                <Button align="right"
+                                    sx={{ marginLeft: 2 }}
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={() => handleDeleteComment(comment.comment_id)}
+                                    disabled={deleteLoading|deleteError}
+                                >
+                                    {deleteStr}
+                                </Button>
+                            )}
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
