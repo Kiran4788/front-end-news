@@ -25,39 +25,39 @@ const Votes = ({ votes }) => {
                 })
                 .finally(() => {
                     setLoading(false);
-                  
+
                 });
         }
     }
 
-        if (loading) {
-            return <Typography gutterBottom variant="h7" component="div">
-                Loading...
-            </Typography>
-        }
-        if (error) {
-            return <Typography gutterBottom variant="h3" component="div">
-                Error updating votes
-            </Typography>
-        }
-        const likeStr = hasLiked ? "Liked" : "Like";
-       
-
-        return (
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-                <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => handleVote(1)}
-                    disabled={hasLiked}
-                >
-                    {likeStr}
-                </Button>
-                <Typography variant="h6" sx={{ marginLeft: 2 }}>
-                    {voteCount} votes
-                </Typography>
-            </Box>
-        );
+    if (loading) {
+        return <Typography gutterBottom variant="h7" component="div">
+            Loading...
+        </Typography>
     }
-    export default Votes;
+    if (error) {
+        return <Typography gutterBottom variant="h3" component="div">
+            Error updating votes
+        </Typography>
+    }
+    const likeStr = hasLiked ? "Liked" : "Like";
+
+
+    return (
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={() => handleVote(1)}
+                disabled={hasLiked}
+            >
+                {likeStr}
+            </Button>
+            <Typography variant="h6" sx={{ marginLeft: 2 }}>
+                {voteCount} votes
+            </Typography>
+        </Box>
+    );
+}
+export default Votes;
 
