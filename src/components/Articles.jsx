@@ -3,17 +3,20 @@ import { useEffect, useState } from "react";
 import { Box, Button, Card, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import { Link } from "react-router";
 import { getArticles } from "../utils/api";
+import { useSearchParams } from "react-router";
 //show article card with image, title and read more button
 
 
 const Articles = () => {
+    const [ params ] = useSearchParams();
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
     useEffect(() => {
-        setLoading(true);
-        getArticles().then((articles) => {
+        setLoading(true);      
+        const topic = params.get("topic");
+        getArticles(topic,null,null).then((articles) => {
             setArticles(articles);
         }
         ).catch((error) => {
