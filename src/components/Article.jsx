@@ -4,6 +4,7 @@ import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/mate
 import { useParams } from "react-router";
 import Comments from "./Comments";
 import { Container } from "@mui/system";
+import Votes from "./Votes";
 
 const Article = () => {
     const { article_id } = useParams();
@@ -59,6 +60,7 @@ const Article = () => {
                         </Typography>
                     </CardContent>
                 </Card>
+                <Votes votes={article.votes} />
             </Box>
             <Box sx={{ padding: 1 }}>
                 <Comments />
