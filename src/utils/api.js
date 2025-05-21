@@ -27,3 +27,11 @@ export const getCommentsByArticleId = async (article_id) => {
     const { data } = await api.get(`/articles/${article_id}/comments`);
     return data.comments;
 };
+
+//patch article by id
+export const patchArticleById = async (article_id, inc_votes) => {
+    const { data } = await api.patch(`/articles/${article_id}`, {
+        inc_votes,
+    });
+    return data.article;
+};
