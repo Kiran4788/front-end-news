@@ -5,10 +5,12 @@ import { useParams } from "react-router";
 import Comments from "./Comments";
 import { Container } from "@mui/system";
 import Votes from "./Votes";
+import AddNewComment from "./AddNewComment";
 
 const Article = () => {
     const { article_id } = useParams();
     const [article, setArticle] = useState(null);
+    const [comments, setComments] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -63,7 +65,8 @@ const Article = () => {
                 <Votes votes={article.votes} />
             </Box>
             <Box sx={{ padding: 1 }}>
-                <Comments />
+                <Comments comments={comments} setComments={setComments}/>
+                <AddNewComment setComments={setComments} />
             </Box>
         </Container>
 

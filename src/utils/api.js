@@ -35,3 +35,12 @@ export const patchArticleById = async (article_id, inc_votes) => {
     });
     return data.article;
 };
+
+//post comment by article id
+export const postCommentByArticleId = async (article_id, username, body) => {
+    const { data } = await api.post(`/articles/${article_id}/comments`, {
+        username,
+        body,
+    });
+    return data.comment;
+};

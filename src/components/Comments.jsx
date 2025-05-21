@@ -7,16 +7,16 @@ import { useParams } from "react-router";
 import { formatDate } from "../utils/utils";
 
 
-const Comments = () => {
+const Comments = ({comments, setComments}) => {
     const { article_id } = useParams();
-    const [comments, setComments] = useState([]);
+   
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
     useEffect(() => {
         setLoading(true);
         getCommentsByArticleId(article_id).then((comments) => {
-            setComments(comments);
+            setComments(comments);            
         }
         ).catch((error) => {
             setError(true);
