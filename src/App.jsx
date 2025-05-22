@@ -17,8 +17,17 @@ function App() {
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:article_id" element={<Article />} />
         <Route path="/topics" element={<Topics />} />
+        <Route path="*" element={<NotFound />} />        
       </Routes>
     </>
+  )
+}
+
+function NotFound() {
+  return (
+    <div>
+      <h2>404 Not Found</h2>
+    </div>
   )
 }
 
