@@ -1,15 +1,17 @@
 //Show text box for user to add a comment and  button to submit the comment
 import { Box, Button, TextField, Typography } from "@mui/material";
 
-import { useState } from "react";
+import { useState ,useContext} from "react";
 import { useParams } from "react-router";
 import { postCommentByArticleId } from "../utils/api";
+import { AccountContext } from "../context/Account";
 
 
 const AddNewComment = ({ setComments }) => {
+    const { loggedInUser } = useContext(AccountContext);
     const { article_id } = useParams();
     const [comment, setComment] = useState("");
-    const [username, setUsername] = useState("happyamy2016");
+    //const [username, setUsername] = useState("happyamy2016");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -23,7 +25,7 @@ const AddNewComment = ({ setComments }) => {
             alert("Please enter a comment");           
         } else {
             setLoading(true);
-            postCommentByArticleId(article_id, username, comment)
+            postCommentByArticleId(article_id, loggedInUser, comment)
                 .then((comment) => {
                     setComments((currentComments) => [comment, ...currentComments]);
                     setComment("");
@@ -42,7 +44,7 @@ const AddNewComment = ({ setComments }) => {
             <form onSubmit={handleSubmit}>
                 <TextField
                     label="Username"
-                    value={username}
+                    value={loggedInUser}
                     disabled={true}
                     fullWidth
                     margin="normal"

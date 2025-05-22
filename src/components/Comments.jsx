@@ -2,15 +2,17 @@ import { getCommentsByArticleId } from "../utils/api";
 //use mui accordian to show comments
 import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Icon, Typography } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import { formatDate } from "../utils/utils";
 import { deleteCommentById } from "../utils/api";
+import { AccountContext } from "../context/Account";
 
 
 const Comments = ({ comments, setComments }) => {
     const { article_id } = useParams();
-    const [username, setUsername] = useState("happyamy2016");
+    const { loggedInUser } = useContext(AccountContext);
+   // const [username, setUsername] = useState("happyamy2016");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [deleteLoading, setDeleteLoading] = useState(false);
@@ -83,7 +85,7 @@ const Comments = ({ comments, setComments }) => {
                     <AccordionDetails>
                         <Typography>
                             {comment.body}
-                            {username === comment.author && (
+                            {loggedInUser === comment.author && (
                                 <Button align="right"
                                     sx={{ marginLeft: 2 }}
                                     variant="contained"

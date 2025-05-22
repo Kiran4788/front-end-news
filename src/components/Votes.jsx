@@ -1,6 +1,6 @@
 import { patchArticleById } from "../utils/api";
 // Show heart button to like and show number of votes
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Card, CardContent, CardMedia, Container, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import { useParams } from "react-router";
 
