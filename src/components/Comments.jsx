@@ -81,11 +81,7 @@ const Comments = ({ comments, setComments }) => {
                     >
                         <Typography>Author: {comment.author}   </Typography>
                         <Typography sx={{ paddingLeft: 5 }}> Created:   {formatDate(comment.created_at)}</Typography>
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <Typography>
-                            {comment.body}
-                            {loggedInUser === comment.author && (
+                        {loggedInUser === comment.author && (
                                 <Button align="right"
                                     sx={{ marginLeft: 2 }}
                                     variant="contained"
@@ -96,6 +92,11 @@ const Comments = ({ comments, setComments }) => {
                                     {deleteStr}
                                 </Button>
                             )}
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography>
+                            {comment.body}
+                           
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
