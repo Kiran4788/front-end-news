@@ -1,12 +1,23 @@
-# React + Vite
+NC-News: A Dynamic News Platform
+Project Overview:
+NC-News is a full-stack web application that serves as a dynamic news platform where users can engage with a variety of articles, explore different topics, and interact with the content. This application allows users to log in, comment on articles, like posts, and delete their own comments, offering an interactive and user-driven experience. It is built using React on the front end and Node.js with Express for the back-end, ensuring a seamless, real-time experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Features:
 
-Currently, two official plugins are available:
+Article Browsing: View and read a wide range of articles, categorized by topics such as technology, sports, and politics.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Commenting: Add, edit, and delete comments on articles, facilitating discussions and sharing opinions.
 
-## Expanding the ESLint configuration
+Likes: Users can express their appreciation for articles by liking them.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Responsive Design: The application is fully responsive, providing a smooth user experience on all devices.
+
+Explore the live project here: [NC-News](https://nc-news-kiran.netlify.app/)
+
+Tech Stack:
+
+Frontend: React.js, CSS, HTML, MUI
+
+Backend: Node.js, Express, Jest, Supertest
+
+Database: Postgresql
