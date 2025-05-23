@@ -21,3 +21,16 @@ Frontend: React.js, CSS, HTML, MUI
 Backend: Node.js, Express, Jest, Supertest
 
 Database: Postgresql
+
+Here is the link to back end project https://github.com/Kiran4788/backend-news
+
+Instructions to run poject locally:
+1. Make sure you have got node js installed (above 23.11.0)
+2. Run command **git clone https://github.com/Kiran4788/front-end-news.git**
+3. Change directory into the project folder
+4. Run **npm install**
+5. To activate the local websire , run **npm run dev **
+
+ 
+ This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
+
