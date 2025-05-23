@@ -4,9 +4,9 @@ NC-News is a full-stack web application that serves as a dynamic news platform w
 
 Features:
 
-Article Browsing: View and read a wide range of articles, categorized by topics such as technology, sports, and politics.
+Article Browsing: View and read a wide range of articles, categorized by topics such as coding, cooking and football.
 
-Commenting: Add, edit, and delete comments on articles, facilitating discussions and sharing opinions.
+Commenting: Add and delete comments on articles, facilitating discussions and sharing opinions.
 
 Likes: Users can express their appreciation for articles by liking them.
 
